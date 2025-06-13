@@ -1,11 +1,11 @@
 # Field Area Measure - Landing Page
 
 <div align="center">
-    <img src="field-area-measure-logo.png" alt="Field Area Measure Logo" width="120">
+  <img src="field-area-measure-logo.png" alt="Field Area Measure Logo" width="120">
     
-    **GPS-Powered Land Measurement App**
+   **GPS-Powered Land Measurement App**
     
-    [![App Store](https://img.shields.io/badge/Download-App%20Store-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/us/app/fields-area-measure/id6740893569)
+   [![App Store](https://img.shields.io/badge/Download-App%20Store-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apps.apple.com/us/app/fields-area-measure/id6740893569)
 </div>
 
 ## 📖 About
