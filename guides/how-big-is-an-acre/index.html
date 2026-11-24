@@ -88,13 +88,24 @@ section.alt { background: var(--soft); }
   .pair .back { width: 180px; } .pair .front { width: 215px; left: 0; }
 }
 
-/* Android-style device frame for the real screenshots */
-.device { position: relative; width: 100%; max-width: 290px; padding: 8px; border-radius: 40px; background: #0d0f12; box-shadow: inset 0 0 0 1.5px #3a3f46, 0 30px 60px rgba(8,20,35,.35); }
-.device img { width: 100%; height: auto; border-radius: 32px; aspect-ratio: 1 / 2; object-fit: cover; }
-.device .cam { position: absolute; top: 20px; left: 50%; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%; background: #0d0f12; box-shadow: 0 0 0 2px #1d2229; z-index: 2; }
-.device.sm { max-width: 230px; padding: 6px; border-radius: 32px; }
-.device.sm img { border-radius: 26px; }
-.device.sm .cam { top: 15px; width: 9px; height: 9px; margin-left: -4.5px; }
+/* phone frame: real screenshots (status bar cropped) + drawn status bar */
+.device { position: relative; width: 100%; max-width: 280px; padding: 9px; border-radius: 44px; background: #101214; box-shadow: inset 0 0 0 1.5px #3b4047, 0 30px 60px rgba(8,20,35,.3); }
+.device .scr { border-radius: 36px; overflow: hidden; }
+.device .sbar { position: relative; display: flex; align-items: center; justify-content: space-between; height: 34px; padding: 4px 22px 0 26px; font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.device .ic { display: flex; gap: 5px; align-items: center; }
+.device .cam { position: absolute; left: 50%; top: 11px; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: #0a0b0c; box-shadow: 0 0 0 1.5px rgba(255,255,255,.08); }
+.device img { display: block; width: 100%; height: auto; }
+.device.sm { max-width: 220px; padding: 7px; border-radius: 36px; }
+.device.sm .scr { border-radius: 30px; }
+.device.sm .sbar { height: 27px; font-size: 10.5px; padding: 3px 17px 0 20px; }
+.device.sm .cam { top: 8px; width: 10px; height: 10px; margin-left: -5px; }
+.device.sm .ic svg { transform: scale(.8); }
+@media (max-width: 860px) {
+  .pair { height: auto; max-width: 270px; margin: 18px auto 0; }
+  .pair .back { display: none; }
+  .pair .front { position: relative; left: 0; width: 100%; }
+  .split .center .device { max-width: 250px; }
+}
 
 /* stats */
 .statbar { background: #081726; padding: 26px 0; border-top: 1px solid rgba(255,255,255,.06); }
@@ -106,10 +117,10 @@ section.alt { background: var(--soft); }
 /* split sections */
 .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
 .split.rev { grid-template-columns: .9fr 1.1fr; }
-.duo { gap: 18px; }
+.duo { gap: 18px; align-items: flex-start; }
 .duo .device { max-width: 220px; }
 .duo .device:last-child { margin-top: 48px; }
-@media (max-width: 860px) { .split, .split.rev { grid-template-columns: 1fr; gap: 28px; } .duo .device { max-width: 46%; } }
+@media (max-width: 860px) { .split, .split.rev { grid-template-columns: 1fr; gap: 28px; } .duo .device { max-width: 47%; } .duo .device:last-child { margin-top: 28px; } }
 .points { list-style: none; display: grid; gap: 16px; }
 .points li { display: flex; gap: 14px; align-items: flex-start; }
 .points p { color: var(--muted); }
@@ -223,7 +234,7 @@ footer .h { font-weight: 800; color: var(--ink); margin-bottom: 6px; }
 <select class="lang" aria-label="Language"><option value="/guides/how-big-is-an-acre/" selected>English</option><option value="/es/">Español</option><option value="/fr/">Français</option><option value="/de/">Deutsch</option><option value="/pt/">Português</option></select><a class="get" href="https://apps.apple.com/app/apple-store/id6740893569?ct=web-nav-en&mt=8" data-play="https://play.google.com/store/apps/details?id=com.asilarslan.fieldarea&amp;referrer=utm_source%3Dfieldareameasure.com%26utm_medium%3Dweb%26utm_campaign%3Dweb-nav-en" rel="noopener">Get the app</a></nav></div></header>
 <main>
 <section class="banner" data-hero><div class="wrap banner-in">
-<div><nav class="crumbs"><a href="/">Home</a> › <a href="/guides/">Guides</a> › How big is an acre?</nav><h1>How big is an acre?</h1><p class="intro">An acre is 43,560 square feet, or about 4,047 square metres. It&#x27;s easier to picture with a few comparisons.</p><p class="upd">Updated: 2026-11-24</p></div><div class="banner-art"><div class="device sm"><i class="cam"></i><img src="/assets/img/screen-en-detail.webp" alt="A saved plot with area and perimeter" width="645" height="1290" fetchpriority="high" decoding="async"></div></div>
+<div><nav class="crumbs"><a href="/">Home</a> › <a href="/guides/">Guides</a> › How big is an acre?</nav><h1>How big is an acre?</h1><p class="intro">An acre is 43,560 square feet, or about 4,047 square metres. It&#x27;s easier to picture with a few comparisons.</p><p class="upd">Updated: 2026-11-24</p></div><div class="banner-art"><div class="device sm"><div class="scr" style="background:rgb(246,247,250)"><div class="sbar" style="color:#0f172a;fill:#0f172a"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-en-detail.webp" alt="A saved plot with area and perimeter" width="645" height="1252" fetchpriority="high" decoding="async"></div></div></div>
 </div></section>
 
 <section style="padding-top:28px"><div class="wrap narrow prose">
