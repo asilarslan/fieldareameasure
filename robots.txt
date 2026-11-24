@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fieldareameasure.com/sitemap.xml
