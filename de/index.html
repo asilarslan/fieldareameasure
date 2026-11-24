@@ -79,7 +79,7 @@ section.alt { background: var(--soft); }
 @media (min-width: 900px) and (hover: hover) { .qr { display: flex; } }
 .pair { position: relative; height: 600px; max-width: 470px; margin-left: auto; }
 .pair .device { position: absolute; }
-.pair .back { right: 0; top: 0; width: 230px; transform: rotate(5deg); opacity: .95; }
+.pair .back { right: 0; top: 0; width: 230px; transform: rotate(5deg); }
 .pair .front { left: 20px; bottom: 0; width: 270px; }
 @media (max-width: 860px) {
   .hero.land { padding: 36px 0 48px; }
@@ -88,23 +88,15 @@ section.alt { background: var(--soft); }
   .pair .back { width: 180px; } .pair .front { width: 215px; left: 0; }
 }
 
-/* phone frame: real screenshots (status bar cropped) + drawn status bar */
-.device { position: relative; width: 100%; max-width: 280px; padding: 9px; border-radius: 44px; background: #101214; box-shadow: inset 0 0 0 1.5px #3b4047, 0 30px 60px rgba(8,20,35,.3); }
-.device .scr { border-radius: 36px; overflow: hidden; }
-.device .sbar { position: relative; display: flex; align-items: center; justify-content: space-between; height: 34px; padding: 4px 22px 0 26px; font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-.device .ic { display: flex; gap: 5px; align-items: center; }
-.device .cam { position: absolute; left: 50%; top: 11px; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: #0a0b0c; box-shadow: 0 0 0 1.5px rgba(255,255,255,.08); }
-.device img { display: block; width: 100%; height: auto; }
-.device.sm { max-width: 220px; padding: 7px; border-radius: 36px; }
-.device.sm .scr { border-radius: 30px; }
-.device.sm .sbar { height: 27px; font-size: 10.5px; padding: 3px 17px 0 20px; }
-.device.sm .cam { top: 8px; width: 10px; height: 10px; margin-left: -5px; }
-.device.sm .ic svg { transform: scale(.8); }
+/* phone mockups: pre-rendered images (tools/mockup.js), only size and shadow here */
+img.device { display: block; width: 100%; max-width: 280px; height: auto; filter: drop-shadow(0 28px 40px rgba(8,20,35,.32)); }
+img.device.sm { max-width: 220px; }
+section.dark img.device, .hero img.device { filter: drop-shadow(0 30px 50px rgba(0,0,0,.55)); }
 @media (max-width: 860px) {
-  .pair { height: auto; max-width: 270px; margin: 18px auto 0; }
+  .pair { height: auto; max-width: 260px; margin: 18px auto 0; }
   .pair .back { display: none; }
   .pair .front { position: relative; left: 0; width: 100%; }
-  .split .center .device { max-width: 250px; }
+  .split .center img.device { max-width: 250px; }
 }
 
 /* stats */
@@ -118,9 +110,9 @@ section.alt { background: var(--soft); }
 .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
 .split.rev { grid-template-columns: .9fr 1.1fr; }
 .duo { gap: 18px; align-items: flex-start; }
-.duo .device { max-width: 220px; }
-.duo .device:last-child { margin-top: 48px; }
-@media (max-width: 860px) { .split, .split.rev { grid-template-columns: 1fr; gap: 28px; } .duo .device { max-width: 47%; } .duo .device:last-child { margin-top: 28px; } }
+.duo img.device { max-width: 220px; min-width: 0; flex: 1 1 0; }
+.duo img.device:last-child { margin-top: 48px; }
+@media (max-width: 860px) { .split, .split.rev { grid-template-columns: 1fr; gap: 28px; } .duo img.device { max-width: 47%; } .duo img.device:last-child { margin-top: 28px; } }
 .points { list-style: none; display: grid; gap: 16px; }
 .points li { display: flex; gap: 14px; align-items: flex-start; }
 .points p { color: var(--muted); }
@@ -133,9 +125,9 @@ section.dark h2 { color: #fff; } section.dark .lead { color: #a9bbcf; } section.
 .pill { display: inline-block; font-size: .88rem; color: #fff; background: rgba(15,157,88,.22); border: 1px solid rgba(15,157,88,.5); padding: 6px 12px; border-radius: 999px; margin-bottom: 30px; }
 .stabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
 .stab h3 { color: #fff; margin-top: 16px; } .stab p { color: #a9bbcf; font-size: .95rem; }
-.stab .device { max-width: 100%; }
+.stab img.device { max-width: 100%; }
 @media (max-width: 960px) { .stabs { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .stabs { grid-template-columns: 1fr; } .stab .device { max-width: 250px; margin: 0 auto; } }
+@media (max-width: 520px) { .stabs { grid-template-columns: 1fr; } .stab img.device { max-width: 250px; margin: 0 auto; } }
 
 /* cards */
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -179,7 +171,7 @@ section.dark h2 { color: #fff; } section.dark .lead { color: #a9bbcf; } section.
 .banner .intro { color: #c3d0df; font-size: 1.12rem; }
 .banner .upd { color: #8ea3bb; font-size: .85rem; margin-top: 12px; }
 .crumbs, .crumbs a { color: #8ea3bb; font-size: .88rem; }
-.banner-art .device { margin: 0 auto; max-width: 210px; }
+.banner-art img.device { margin: 0 auto; max-width: 210px; }
 @media (max-width: 860px) { .banner-in { grid-template-columns: 1fr; } .banner-art { display: none; } }
 .prose h2 { margin-top: 36px; font-size: 1.6rem; }
 .prose p, .prose ul, .prose ol { margin: 12px 0; }
@@ -243,17 +235,17 @@ footer .h { font-weight: 800; color: var(--ink); margin-bottom: 6px; }
 <p style="margin-top:16px"><a class="btn btn-ghost light" href="/de/flaechenrechner/">Flächenrechner öffnen</a></p>
 <div class="qr"><img src="/assets/img/qr-app-store.svg" alt="QR code" width="84" height="84" loading="lazy"><span>Mit der Handykamera scannen, um die App zu laden</span></div>
 </div>
-<div class="media"><div class="pair"><div class="device back"><div class="scr" style="background:rgb(6,16,29)"><div class="sbar" style="color:#fff;fill:#fff"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-de-site0.webp" alt="Sonnenbahn über dem Grundstück" width="645" height="1252" loading="lazy" decoding="async"></div></div><div class="device front"><div class="scr" style="background:rgb(255,255,255)"><div class="sbar" style="color:#0f172a;fill:#0f172a"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-de-measure.webp" alt="Ein Feld auf der Satellitenkarte in Field Area Measure messen" width="645" height="1252" fetchpriority="high" decoding="async"></div></div></div></div>
+<div class="media"><div class="pair"><img class="device back" src="/assets/img/screen-de-site0.webp" alt="Sonnenbahn über dem Grundstück" width="720" height="1555" loading="lazy" decoding="async"><img class="device front" src="/assets/img/screen-de-measure.webp" alt="Ein Feld auf der Satellitenkarte in Field Area Measure messen" width="720" height="1555" fetchpriority="high" decoding="async"></div></div>
 </div></section>
 <section class="statbar"><div class="wrap"><div class="stats"><div><b>6</b><span>Flächeneinheiten</span></div><div><b>4</b><span>Analyse-Werkzeuge</span></div><div><b>PDF</b><span>Messberichte</span></div><div><b>20</b><span>Sprachen</span></div></div></div></section>
 
 <section><div class="wrap split">
 <div><p class="kick">Messen</p><h2>Fläche und Umfang in Sekunden</h2><p class="lead">Kein Abschreiten, kein Maßband. Feld auf der Karte finden, Ecken antippen, Ergebnis ablesen.</p><ul class="points"><li><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 9a2 2 0 0 1 4 0v3"/><path d="M17 11a2 2 0 0 1 4 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4 15a2 2 0 0 1 3.4-2L9 15"/></svg><div><b>Tippen oder zielen</b><p>Karte antippen oder mit dem Fadenkreuz zielen und + drücken. Ecken lassen sich verschieben.</p></div></li><li><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/></svg><div><b>Jede Seite beschriftet</b><p>Jede Seite zeigt ihre Länge, Fläche und Umfang aktualisieren sich sofort.</p></div></li><li><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h7v7H4zM13 13h7v7h-7z"/><path d="M13 7h7M17 3v8M4 17h7"/></svg><div><b>Deine Einheiten</b><p>Quadratmeter, Quadratkilometer, Hektar, Acre, Quadratfuß oder Quadratyard.</p></div></li></ul></div>
-<div class="center"><div class="device "><div class="scr" style="background:rgb(255,255,255)"><div class="sbar" style="color:#0f172a;fill:#0f172a"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-de-measure.webp" alt="Feld auf der Satellitenkarte messen" width="645" height="1252" loading="lazy" decoding="async"></div></div></div>
+<div class="center"><img class="device " src="/assets/img/screen-de-measure.webp" alt="Feld auf der Satellitenkarte messen" width="720" height="1555" loading="lazy" decoding="async"></div>
 </div></section>
 
 <section class="alt"><div class="wrap split rev">
-<div class="center duo"><div class="device sm"><div class="scr" style="background:rgb(246,247,250)"><div class="sbar" style="color:#0f172a;fill:#0f172a"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-de-list.webp" alt="Liste der Messungen" width="645" height="1252" loading="lazy" decoding="async"></div></div><div class="device sm"><div class="scr" style="background:rgb(255,255,255)"><div class="sbar" style="color:#0f172a;fill:#0f172a"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-de-detail.webp" alt="Gespeichertes Grundstück mit Fläche und Umfang" width="645" height="1252" loading="lazy" decoding="async"></div></div></div>
+<div class="center duo"><img class="device sm" src="/assets/img/screen-de-list.webp" alt="Liste der Messungen" width="720" height="1555" loading="lazy" decoding="async"><img class="device sm" src="/assets/img/screen-de-detail.webp" alt="Gespeichertes Grundstück mit Fläche und Umfang" width="720" height="1555" loading="lazy" decoding="async"></div>
 <div><h2>Jede Messung gespeichert</h2><p class="lead">Benenne deine Flächen, finde sie per Suche, öffne sie in Karten und exportiere einen PDF-Bericht.</p>
 <a class="btn btn-primary" href="/de/flaechenrechner/">Flächenrechner öffnen</a></div>
 </div></section>
@@ -261,7 +253,7 @@ footer .h { font-weight: 800; color: var(--ink); margin-bottom: 6px; }
 <section class="dark"><div class="wrap">
 <p class="kick">Grundstücksanalyse</p><h2>Bauen geplant? Analysiere das Grundstück.</h2><p class="lead">Die Grundstücksanalyse liefert die Antworten, die du vor Kauf oder Entwurf brauchst.</p>
 <p class="pill">Die Grundstücksanalyse gibt es jetzt für Android; die iPhone-Version folgt.</p>
-<div class="stabs"><div class="stab"><div class="device sm"><div class="scr" style="background:rgb(6,16,29)"><div class="sbar" style="color:#fff;fill:#fff"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-de-site0.webp" alt="Sonnenbahn über dem Grundstück" width="645" height="1252" loading="lazy" decoding="async"></div></div><h3>Sonne</h3><p>Sonnenbahn im Sommer und Winter, Sonnenhöhe mittags und der Dachüberstand, der Sommersonne abschirmt und Wintersonne hereinlässt.</p></div><div class="stab"><div class="device sm"><div class="scr" style="background:rgb(1,7,23)"><div class="sbar" style="color:#fff;fill:#fff"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-en-site1.webp" alt="Sonnenbahn über dem Grundstück" width="645" height="1252" loading="lazy" decoding="async"></div></div><h3>Bebauung</h3><p>Straßenseite wählen, Abstände und Grundflächenzahl setzen und die bebaubare Fläche mit Beispielgrundriss sehen.</p></div><div class="stab"><div class="device sm"><div class="scr" style="background:rgb(1,7,23)"><div class="sbar" style="color:#fff;fill:#fff"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-en-site2.webp" alt="Sonnenbahn über dem Grundstück" width="645" height="1252" loading="lazy" decoding="async"></div></div><h3>Gefälle</h3><p>Geländedaten oder eigene Eckhöhen ergeben Gefälle, Richtung und Stufen von der Straße zur Tür.</p></div><div class="stab"><div class="device sm"><div class="scr" style="background:rgb(1,7,23)"><div class="sbar" style="color:#fff;fill:#fff"><span>9:41</span><i class="cam"></i><span class="ic"><svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/></svg></span></div><img src="/assets/img/screen-en-site3.webp" alt="Sonnenbahn über dem Grundstück" width="645" height="1252" loading="lazy" decoding="async"></div></div><h3>Bericht</h3><p>Ein Steckbrief des Grundstücks: Sonne, Lage, Niveau, Aussicht, Zugang.</p></div></div>
+<div class="stabs"><div class="stab"><img class="device sm" src="/assets/img/screen-de-site0.webp" alt="Sonnenbahn über dem Grundstück" width="720" height="1555" loading="lazy" decoding="async"><h3>Sonne</h3><p>Sonnenbahn im Sommer und Winter, Sonnenhöhe mittags und der Dachüberstand, der Sommersonne abschirmt und Wintersonne hereinlässt.</p></div><div class="stab"><img class="device sm" src="/assets/img/screen-en-site1.webp" alt="Sonnenbahn über dem Grundstück" width="720" height="1555" loading="lazy" decoding="async"><h3>Bebauung</h3><p>Straßenseite wählen, Abstände und Grundflächenzahl setzen und die bebaubare Fläche mit Beispielgrundriss sehen.</p></div><div class="stab"><img class="device sm" src="/assets/img/screen-en-site2.webp" alt="Sonnenbahn über dem Grundstück" width="720" height="1555" loading="lazy" decoding="async"><h3>Gefälle</h3><p>Geländedaten oder eigene Eckhöhen ergeben Gefälle, Richtung und Stufen von der Straße zur Tür.</p></div><div class="stab"><img class="device sm" src="/assets/img/screen-en-site3.webp" alt="Sonnenbahn über dem Grundstück" width="720" height="1555" loading="lazy" decoding="async"><h3>Bericht</h3><p>Ein Steckbrief des Grundstücks: Sonne, Lage, Niveau, Aussicht, Zugang.</p></div></div>
 </div></section>
 
 <section><div class="wrap">

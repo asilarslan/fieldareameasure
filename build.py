@@ -7,7 +7,7 @@
 content/site.py  : SITE, BRAND, APP_ID, PLAY_ID, LANGS, SISTER, RATING, HOME
 content/pages.py : UNITS, EXTRA_UNITS, TOOL, EXTRA_TOOLS, GUIDES, HUB
 Generated HTML is committed; GitHub Pages serves the repo root. Legal pages are hand-written.
-App screens (assets/img/screen-<lang>-<key>.webp) are real captures of the Android app.
+App screens (assets/img/screen-<lang>-<key>.webp) are real 1080×2400 captures of the Android app, framed by tools/mockup.js.
 """
 import datetime
 import hashlib
@@ -107,23 +107,11 @@ def screen(lang, key):
     raise SystemExit(f"missing screen {key}")
 
 
-SCREENS = json.load(open(os.path.join(ROOT, "content", "screens.json")))
-SBAR_ICONS = ('<svg width="15" height="11" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/>'
-              '<rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/>'
-              '<rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="22" height="11" viewBox="0 0 25 12" aria-hidden="true">'
-              '<rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".45"/>'
-              '<rect x="2" y="2" width="17" height="8" rx="2"/></svg>')
-
-
 def device(lang, key, alt, eager=False, cls=""):
-    """Real app screenshot (Android status bar cropped) in a phone frame with a clean drawn status bar."""
-    src = screen(lang, key)
-    m = SCREENS[src.rsplit("screen-", 1)[1].removesuffix(".webp")]
+    """Real app screenshot inside a phone (pre-rendered by tools/mockup.js, transparent background)."""
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
-    ink = "#fff" if m["dark"] else "#0f172a"
-    return (f'<div class="device {cls}"><div class="scr" style="background:{m["bg"]}">'
-            f'<div class="sbar" style="color:{ink};fill:{ink}"><span>9:41</span><i class="cam"></i><span class="ic">{SBAR_ICONS}</span></div>'
-            f'<img src="{src}" alt="{esc(alt)}" width="645" height="{m["h"]}" {load} decoding="async"></div></div>')
+    return (f'<img class="device {cls}" src="{screen(lang, key)}" alt="{esc(alt)}" width="720" height="1555" '
+            f'{load} decoding="async">')
 
 
 def qr(text, cls="qr", size=84):

@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* Modern phone (20:9 screen, thin even bezels, centre punch-hole, side keys). Screen = 1080×2400 screenshot. */
+html,body{margin:0;background:transparent}
+.ph{position:relative;width:520px;padding:14px;margin:0 22px 0 6px;border-radius:66px;
+  background:linear-gradient(135deg,#3a3d42 0%,#17191c 18%,#0b0c0e 50%,#17191c 82%,#3a3d42 100%);
+  box-shadow:inset 0 0 0 2px #4b4f56, inset 0 0 0 5px #0b0c0e}
+.scr{position:relative;border-radius:53px;overflow:hidden;background:#000;aspect-ratio:1080/2400}
+.scr img{display:block;width:100%;height:100%;object-fit:cover}
+.hole{position:absolute;top:22px;left:50%;width:26px;height:26px;margin-left:-13px;border-radius:50%;background:#050506;
+  box-shadow:0 0 0 2px rgba(255,255,255,.06), inset 0 0 6px rgba(80,110,160,.35)}
+.glare{position:absolute;inset:0;border-radius:53px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 32%)}
+.key{position:absolute;right:-5px;width:6px;border-radius:0 4px 4px 0;background:linear-gradient(90deg,#1a1c1f,#4a4e55)}
+.k1{top:230px;height:96px}.k2{top:370px;height:160px}
+</style></head><body><div class="ph" id="ph"><div class="scr"><img id="s"><i class="hole"></i><i class="glare"></i></div><i class="key k1"></i><i class="key k2"></i></div></body></html>
